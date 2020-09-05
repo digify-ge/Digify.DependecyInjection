@@ -23,8 +23,8 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore ./Digify.DependencyInjection.sln
+      run: dotnet restore ./src/Digify.DependencyInjection.sln
     - name: Build
-      run: dotnet build ./Digify.DependencyInjection.sln --configuration Release --no-restore
+      run: dotnet build ./src/Digify.DependencyInjection.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test ./Digify.DependencyInjection.sln --no-restore --verbosity normal
+      run: dotnet test ./src/Digify.DependencyInjection.sln --no-restore --verbosity normal
