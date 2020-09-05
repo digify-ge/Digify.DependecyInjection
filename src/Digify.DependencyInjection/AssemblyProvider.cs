@@ -16,7 +16,6 @@ namespace Digify.DependecyInjection
         public Func<Assembly, bool> IsCandidateAssembly { get; set; }
 
         public Func<Library, bool> IsCandidateCompilationLibrary { get; set; }
-
         public AssemblyProvider(IServiceProvider serviceProvider)
         {
             this.logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<AssemblyProvider>();
