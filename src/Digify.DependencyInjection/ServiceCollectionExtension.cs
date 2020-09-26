@@ -12,6 +12,10 @@ namespace Digify.DependecyInjection
     {
         public static IServiceCollection AddAutoDependency(this IServiceCollection serviceCollection)
         {
+            if(serviceCollection.BuildServiceProvider().GetService<ILoggerFactory>() == null)
+            {
+                serviceCollection.AddLogging();
+            }
             var assemblyProvider = new AssemblyProvider(serviceCollection.BuildServiceProvider());
             var assemblies = assemblyProvider.GetAssemblies(string.Empty);
             var dependencies = BuildBlueprint(assemblies, IsDependency);
