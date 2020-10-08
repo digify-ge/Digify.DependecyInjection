@@ -15,9 +15,9 @@ namespace Digify.DependecyInjection
             var assemblyProvider = new AssemblyProvider(serviceCollection.BuildServiceProvider());
             var assemblies = assemblyProvider.GetAssemblies(string.Empty);
             var dependencies = BuildBlueprint(assemblies, IsDependency);
-            foreach (var dependency in dependencies)
+            foreach (Type dependency in dependencies)
             {
-                foreach (var interfaceType in dependency.GetInterfaces())
+                foreach (Type interfaceType in dependency.GetInterfaces())
                 {
                     // GetInterfaces returns the full hierarchy of interfaces
                     if (interfaceType == typeof(ISingletonDependency) ||
@@ -40,7 +40,6 @@ namespace Digify.DependecyInjection
                     {
                         serviceCollection.AddScoped(interfaceType, dependency);
                     }
-                    break;
                 }
             }
            
